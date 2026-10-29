@@ -1,0 +1,66 @@
+# MPLADS-Lens Configuration
+# All thresholds and weights editable here; also exposed as sidebar sliders.
+
+# ─── Detector thresholds ────────────────────────────────────────────────────
+detectors:
+  cost:
+    robust_z_threshold: 3.5      # MAD-based z-score cutoff (upward outliers only)
+    min_peer_group_size: 8       # min works in tightest peer group before fallback
+    fallback_levels:
+      - [work_category, district_class, sanction_year]  # level 0 (tightest)
+      - [work_category, state]                           # level 1 fallback
+      - [work_category]                                  # level 2 fallback
+
+  duplicate:
+    cosine_threshold: 0.85       # TF-IDF cosine similarity cutoff
+    fuzzy_threshold: 90          # rapidfuzz token_set_ratio cutoff (0-100)
+    date_window_days: 90         # max days between sanction dates to flag as near-dup
+    combine_mode: "and"          # "and" = flag if both cosine AND fuzzy fire
+
+  stalled:
+    days_since_sanction: 730     # must be sanctioned at least this long ago
+    days_no_progress: 365        # last_progress_date older than this (or null)
+    require_released_funds: true # only flag if released_amount > 0
+
+  agency:
+    contamination: 0.08          # IsolationForest contamination parameter
+    random_state: 42
+    min_works_per_agency: 5      # agencies with fewer works are skipped
+
+  delay:
+    # NOTE: Verify sanction_delay_threshold against current MPLADS guidelines
+    # (April 2023 guidelines: DM sanction within 75 days of MP recommendation).
+    sanction_delay_threshold: 75          # days from recommended_date to sanctioned_date
+    completion_percentile_threshold: 90   # flag if completion time > peer p90
+
+# ─── Scoring weights ─────────────────────────────────────────────────────────
+scoring:
+  weights:
+    cost: 0.30
+    duplicate: 0.25
+    stalled: 0.25
+    agency: 0.10
+    delay: 0.10
+  multi_detector_bonus: 5.0    # added when ≥2 detectors fire; capped at 100
+
+# ─── Severity thresholds ─────────────────────────────────────────────────────
+severity:
+  high: 70
+  medium: 40
+
+# ─── Anonymisation ───────────────────────────────────────────────────────────
+anonymise:
+  salt: "mplads-lens-demo-2026"  # change this for production deployments
+  on_by_default: true
+
+# ─── Synthetic data ──────────────────────────────────────────────────────────
+synthetic:
+  n_works: 20000
+  random_seed: 42
+  anomaly_rate: 0.035          # ~3.5% of works have planted anomalies
+  output_path: "data/synthetic_works.parquet"
+
+# ─── Pipeline ────────────────────────────────────────────────────────────────
+pipeline:
+  db_path: "data/mplads_lens.duckdb"
+  data_dir: "data"

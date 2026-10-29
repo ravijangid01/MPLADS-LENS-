@@ -1,0 +1,225 @@
+/* MPLADS-Lens Design System
+   Palette: navy #1F3864, blue #0070C0, light-blue #DEEAF6,
+            accent #C55A11, white #FFFFFF */
+
+/* ── Google Font (Inter via system fallback) ─────────────────────────────── */
+* {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+/* ── Body & Background ───────────────────────────────────────────────────── */
+.stApp {
+  background-color: #FFFFFF;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+  background-color: #1F3864;
+}
+[data-testid="stSidebar"] * {
+  color: #DEEAF6 !important;
+}
+[data-testid="stSidebar"] .stSlider > div > div > div {
+  background-color: #0070C0;
+}
+[data-testid="stSidebar"] a {
+  color: #7EC8E3 !important;
+}
+
+/* ── Persistent Alert Banner ─────────────────────────────────────────────── */
+.review-banner {
+  background-color: #FFF3CD;
+  border-left: 5px solid #C55A11;
+  color: #7A3B00;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 12px;
+}
+
+/* ── Source Badge ────────────────────────────────────────────────────────── */
+.source-badge {
+  display: inline-block;
+  background-color: #DEEAF6;
+  color: #1F3864;
+  border: 1px solid #0070C0;
+  border-radius: 20px;
+  padding: 2px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.source-badge.user-data {
+  background-color: #E8F5E9;
+  border-color: #388E3C;
+  color: #1B5E20;
+}
+
+/* ── KPI Card ────────────────────────────────────────────────────────────── */
+.kpi-card {
+  background: #FFFFFF;
+  border: 1px solid #D0DCF0;
+  border-radius: 10px;
+  padding: 18px 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,112,192,0.07);
+}
+.kpi-card .kpi-value {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #1F3864;
+  line-height: 1.1;
+}
+.kpi-card .kpi-label {
+  font-size: 0.78rem;
+  color: #5A6A8A;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Severity Chips ──────────────────────────────────────────────────────── */
+.chip {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 2px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.chip-high   { background: #FDECEA; color: #C62828; border: 1px solid #E57373; }
+.chip-medium { background: #FFF8E1; color: #E65100; border: 1px solid #FFB74D; }
+.chip-low    { background: #E8EEF7; color: #1F3864; border: 1px solid #90A4AE; }
+
+/* ── Section Card ────────────────────────────────────────────────────────── */
+.section-card {
+  background: #FFFFFF;
+  border: 1px solid #D0DCF0;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 6px rgba(0,112,192,0.05);
+}
+
+/* ── Evidence Panel ──────────────────────────────────────────────────────── */
+.evidence-panel {
+  background: #F7FAFF;
+  border: 1px solid #DEEAF6;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 10px;
+}
+
+/* ── Timeline ────────────────────────────────────────────────────────────── */
+.timeline-item {
+  border-left: 3px solid #0070C0;
+  padding-left: 14px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.timeline-item::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #0070C0;
+  border-radius: 50%;
+  position: absolute;
+  left: -7px;
+  top: 4px;
+}
+.timeline-item.stalled {
+  border-left-color: #C62828;
+}
+.timeline-item.stalled::before {
+  background: #C62828;
+}
+
+/* ── Diff highlight ──────────────────────────────────────────────────────── */
+.diff-added   { background: #E8F5E9; color: #1B5E20; padding: 0 3px; border-radius: 2px; }
+.diff-removed { background: #FDECEA; color: #B71C1C; padding: 0 3px; border-radius: 2px; }
+
+/* ── Legitimate reasons box ─────────────────────────────────────────────── */
+.legit-box {
+  background: #EDF7ED;
+  border: 1px solid #A5D6A7;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 12px;
+}
+.legit-box h4 {
+  color: #2E7D32;
+  margin-top: 0;
+  font-size: 0.9rem;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.app-header {
+  background: linear-gradient(135deg, #1F3864 0%, #0070C0 100%);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.app-header .subtitle {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.app-footer {
+  background: #F4F6FA;
+  border-top: 1px solid #D0DCF0;
+  padding: 10px 20px;
+  font-size: 0.75rem;
+  color: #5A6A8A;
+  margin-top: 40px;
+  border-radius: 0 0 8px 8px;
+  text-align: center;
+}
+
+/* ── Reviewed badge ─────────────────────────────────────────────────────── */
+.reviewed-badge {
+  background: #E8F5E9;
+  color: #2E7D32;
+  border: 1px solid #A5D6A7;
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* ── Data quality bar ────────────────────────────────────────────────────── */
+.quality-bar-track {
+  background: #D0DCF0;
+  border-radius: 4px;
+  height: 8px;
+  overflow: hidden;
+}
+.quality-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #C55A11, #0070C0);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .kpi-card .kpi-value { font-size: 1.3rem; }
+  .app-header h1 { font-size: 1.1rem; }
+}
+
+/* ── Hide default Streamlit elements ──────────────────────────────────────── */
+#MainMenu { visibility: hidden; }
+footer { visibility: hidden; }
+header { visibility: hidden; }

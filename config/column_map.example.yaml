@@ -1,0 +1,50 @@
+# eSAKSHI Portal Works Export — Column Map
+# Maps raw CSV/Excel column headers from the eSAKSHI MPLADS portal export
+# to the canonical MPLADS-Lens schema columns.
+#
+# Usage: pass this file path in the Data page upload wizard,
+# or set COLUMN_MAP_PATH env var.
+#
+# Format:
+#   canonical_column_name: "Exact column header in your file"
+#   Set to null to mark as not available in source (column will be filled with NA).
+
+# ─── Identity ────────────────────────────────────────────────────────────────
+work_id:            "Sr. No."            # or "Work ID" if exported individually
+mp_ref:             "Members of Parliament"
+constituency:       "Constituency"
+state:              "State"
+district:           "District"
+
+# ─── Geography ───────────────────────────────────────────────────────────────
+block_or_village:   "Block / Village"    # sometimes "Block Name" or "Village Name"
+district_class:     null                 # not in export; auto-derived from district lookup
+
+# ─── Work details ────────────────────────────────────────────────────────────
+work_title:         "Name of Work"       # eSAKSHI: "Name of Work" / "Work Name"
+work_description:   "Name of Work"       # use same column; description often same as title
+work_category:      "Category of Work"   # e.g. "Road", "Drinking Water", "School"
+
+# ─── Agency ──────────────────────────────────────────────────────────────────
+implementing_agency: "Implementing Agency"
+
+# ─── Dates ───────────────────────────────────────────────────────────────────
+# All dates should be in dd-mm-yyyy or dd/mm/yyyy format.
+recommended_date:   "Date of Recommendation"
+sanctioned_date:    "Date of Sanction"
+completion_date:    "Date of Completion"   # null if not completed
+last_progress_date: "Last Updated Date"    # may be "Last Progress Date"
+
+# ─── Financials (Indian number format: lakhs/crores accepted) ─────────────
+sanctioned_amount:  "Sanctioned Amount (Rs.)"
+released_amount:    "Released Amount (Rs.)"
+expenditure_amount: "Expenditure Amount (Rs.)"
+
+# ─── Progress ────────────────────────────────────────────────────────────────
+status:             "Status"             # "Completed" / "In Progress" / "Not Started"
+completion_percent: "% Completion"       # numeric 0-100
+
+# ─── eSAKSHI-specific extra columns (optional; used for data quality) ─────
+# These are read if present but not part of the canonical schema.
+_esakshi_work_code: "Work Code"
+_esakshi_dpc_approved: "DPC Approved Amount (Rs.)"
