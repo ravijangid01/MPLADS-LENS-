@@ -55,7 +55,7 @@ anonymise:
 
 # ─── Synthetic data ──────────────────────────────────────────────────────────
 synthetic:
-  n_works: 20000
+  n_works: 3500
   random_seed: 42
   anomaly_rate: 0.035          # ~3.5% of works have planted anomalies
   output_path: "data/synthetic_works.parquet"

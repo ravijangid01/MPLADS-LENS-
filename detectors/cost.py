@@ -103,7 +103,7 @@ class CostOutlierDetector(BaseDetector):
                     "peer_mad": float(mad),
                     "robust_z": float(z),
                     "cost_ratio": cost_ratio,
-                    "peer_costs": group["sanctioned_amount"].tolist(),
+                    "peer_costs": group["sanctioned_amount"].head(30).tolist() if raw_score > 0 else [],
                     "peer_sample": peer_sample,
                 }
 
